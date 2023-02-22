@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="banner">
+    <h1><%= @restaurant.name %></h1>
+    <%= link_to 'Back to restaurants', restaurants_path %>
+  </div>
+  <div class="show-card">
+    <p><strong>Address: </strong><%= @restaurant.address %></p>
+  </div>
+  <div class="show-card">
+    <p><strong>Category: </strong><%= @restaurant.category.capitalize %></p>
+  </div>
+  <hr>
+  <div class="banner">
+    <h3>Reviews:</h3>
+  </div>
+  <div class="reviews">
+    <div class="show-card">
+      <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+    </div>
+    <div class="show-card">
+      <% @restaurant.reviews.each do |review| %>
+        <h4><%= review.rating.to_i %> stars</h4>
+        <p><%= review.content %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# Setup grid layout %>
